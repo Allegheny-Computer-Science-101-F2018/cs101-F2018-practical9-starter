@@ -1,0 +1,19 @@
+---
+name: cmpsc-101-fall-2018-practical9
+break: true
+indent: 4
+---
+# --> check the source code for various characteristics
+# note that without an "--exact" the check is an "at least"
+src/main:
+    java:
+        practicalnine/count/WordCount.java:
+            --multi 5 --language Java --exact
+            --fragment "println(" --count 9 --exact
+            --fragment "public static void" --count 1 --exact
+            --fragment "TODO" --count 0 --exact
+# --> check the number of commits beyond a threshold
+--commits 10
+# --> check that the program executes correctly
+--command "gradle -q --console plain run" --executes
+--command "gradle -q --console plain run" --count 8 --exact
